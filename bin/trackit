@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const resp     = require('response');
 
 mongoose.connect('mongodb://'+process.env.DbHost+'/'+process.env.DbName);
 mongoose.Promise = global.Promise;
@@ -10,5 +11,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 var app = express();
 
 
+app.use((req,res,next)=>{
+  var respCtx = new resp(req,res);
+  respCtx.customResponse(404,"Resource not found",null);
+});
 app.listen(process.env.HttpPort);
 module.exports = app;
