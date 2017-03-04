@@ -19,6 +19,7 @@
   "homepage": "https://github.com/atlasterHq/trackit#readme",
   "dependencies": {
     "auth": "1.0.0",
+    "dotenv": "4.0.0",
     "express": "4.15.0",
     "mongoose": "4.8.5",
     "response": "1.0.0"
