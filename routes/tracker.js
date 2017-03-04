@@ -19,7 +19,7 @@ route.get("/:id",(req,res,next)=>{
   req.body.headers = req.headers;
   req.body.token = req.params.id;
   req.body.timeStamp = new Date();
-  new tracker(req.body)
+  new access(req.body)
     .save()
     .then((data)=>{
       var buf = new Buffer(35);
