@@ -1,9 +1,9 @@
 var trackit = require('./index');
 
 trackit()
-  .then((id)=>{
+  .then(function(id){
     console.log(id);
   })
-  .catch((err)=>{
+  .catch(function(err){
     console.log(err);
   });

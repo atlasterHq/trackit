@@ -1,10 +1,14 @@
 require('dotenv').config();
-const request = require('request');
+var request = require('request');
 
-module.exports = ()=>{
-  return new Promise((fullfill,reject)=>{
-    request.post(process.env.TrackitHost+"/tracker",{},(err,response,body)=>{
-      if(err) reject(err)
+var Promise = global.promise;
+
+module.exports = function(){
+  return new Promise(function(fullfill,reject){
+    request.post(process.env.TrackitHost+"/tracker",{},function(err,response,body){
+      if(err){
+        reject(err);
+      }
       else{
         var resp = JSON.parse(response.body);
         fullfill(resp.data._id);
